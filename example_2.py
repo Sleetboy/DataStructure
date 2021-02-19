@@ -88,6 +88,9 @@ class SinglyLinkedList:
         1. find_node_at()
         2. 그 자리에 num 을 지운다.
         """
+        pass
+
+
         self.count_length(-1)
 
 
