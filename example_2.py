@@ -31,7 +31,7 @@ class SinglyLinkedList:
     def get_length(self):
         return self.length
 
-    def count_length(self, cnt=1):
+    def count_length(self, cnt):
         self.length += cnt
 
     def append(self, num):
@@ -42,7 +42,7 @@ class SinglyLinkedList:
         else:   # 2. LinkedList 에 하나의 값이라도 있는 경우
             self.tail.next = Node(num)  # -> LinkedList 의 맨 뒤의 Node 의 self.next 에 부착
             self.tail = self.tail.next
-        self.count_length()
+        self.count_length(1)
 
     def get_index_of_num(self, num):
         """ num 값을 가진 Node 객체의 index 를 찾아서 return """
@@ -81,16 +81,22 @@ class SinglyLinkedList:
             pre_node = self.find_node_at(idx-1)
             node.next = pre_node.next
             pre_node.next = node
-        self.count_length()
+        self.count_length(1)
 
     def delete_num_at_index(self, idx):
         """
         1. find_node_at()
         2. 그 자리에 num 을 지운다.
         """
-        pass
 
-
+        node = self.find_node_at(idx)
+        if idx == 0:     # 첫 번째 노드를 지울 때
+            self.head = node.next
+        elif idx == self.get_length():    # 마지막 노드를 지울 때
+            self.tail.next = None
+        else:           # 중간 어딘가의 노드를 지울 때
+            pre_node = self.find_node_at(idx - 1)
+            pre_node.next = node.next
         self.count_length(-1)
 
 
@@ -119,15 +125,36 @@ def main():
     lst.append(14562)
     print(lst, end='\n')
 
-    lst.insert_num_at_index(2, 19)
-    print(lst, end='\n')
-
-    lst.insert_num_at_index(0, 27)
-    print(lst, end='\n')
-
+    #lst.insert_num_at_index(2, 19)
+    #print(lst, end='\n')
+#
+    #lst.insert_num_at_index(0, 27)
+    #print(lst, end='\n')
+#
     max_length = lst.get_length()
+
+    print(max_length)
+
     lst.insert_num_at_index(max_length, 27)
     print(lst, end='\n')
+
+    print(max_length)
+
+    lst.delete_num_at_index(2)
+    print(lst, end='\n')
+
+    print(max_length)
+
+    lst.delete_num_at_index(0)
+    print(lst, end='\n')
+
+    print(max_length)
+
+    lst.delete_num_at_index(3)
+    print(lst, end='\n')
+
+
+
 
     # Catch exception CanNotFindNodeByValue
     # ================================================
