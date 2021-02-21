@@ -134,10 +134,10 @@ def main():
     max_length = lst.length
     print(max_length)
 
-    # list 의 length 를 return 하는 custom method 를 만들어서 사용
+    # list 의 length 를 return 하는 custom method 를 만들어서 사용 (line 95)
     print(lst.get_length())
 
-    # python special method 를 활용하여 길이를 구함, 가장 Pythonic 한 방법
+    # python special method 를 활용하여 길이를 구함, 가장 Pythonic 한 방법 (line 32)
     print(len(lst))
 
     print('================ delete ================')
