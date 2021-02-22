@@ -21,11 +21,11 @@ class DoublyLinkedList:
     def __repr__(self):
         nodes = []
         now_node = self.head
-        while True:
-            if now_node is None:
-                break
-            nodes.append(now_node)
+        nodes.append(now_node)
+        while now_node is not now_node.next \
+                and now_node is not self.tail:
             now_node = now_node.next
+            nodes.append(now_node)
         return str([node for node in nodes])
 
     def get_length(self):
@@ -97,6 +97,8 @@ def main():
 
     lst.append(0)
     lst.append(1)
+    lst.append(2)
+    lst.append(3)
     print(lst)
 
     lst.insert_node_at(0, 1)
